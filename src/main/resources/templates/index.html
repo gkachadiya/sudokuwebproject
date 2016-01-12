@@ -12,37 +12,31 @@
 </head>
 
 <body>
-
 <div ng-controller="sudokuManagerController">
 	<h2 class="page-title">Sudoku Board Web Services</h2>
-	<div class="alert alert-info" role="alert" ng-hide="items.length > 0">
-        There are no items yet.
+	<div class="alert alert-info" role="alert">
+        There are no Sudoku items yet.
     </div>
-    <form class="form-horizontal" role="form" ng-submit="addItem(newItem)">
-    <div class="form-group" ng-repeat="item in itemList">
-        <div class="checkbox col-xs-9">
-            <label>
-              <input type="checkbox" ng-model="item.checked" ng-change="updateItem(item)"/> {{item.description}}
-            </label>
-        </div>
-        <div class="col-xs-3">
-            <button class="pull-right btn btn-danger" type="button" title="Delete"
-              ng-click="deleteItem(item)">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
-    	</div>
-    </div>
-    <hr />
+    <form class="form-horizontal" role="form" ng-submit="updateSudoku()">
     <div class="input-group">
-    	<input type="text" class="form-control" ng-model="newItem" placeholder="Enter the description..." />
+    	<br></br>
+	    <div class="alert alert-info" role="alert" ng-show="statusFlag">
+	        <span class="priority priority-yellow">
+				The status of {{status}} number {{number}}
+			</span>
+	    </div>
+	    <br></br>
+    	Enter Number : <input type="text" class="form-control" ng-model="number" placeholder="Enter the Sudoku Number" /><br></br>
+    	Enter Array Index i : <input type="text" class="form-control" ng-model="indexI" placeholder="Array Index I where number is been placed" /><br></br>
+    	Enter Array Index j : <input type="text" class="form-control" ng-model="indexJ" placeholder="Array Index J where number is been placed" /><br></br>
         <span class="input-group-btn">
-        	<button class="btn btn-default" type="submit" ng-disabled="!newItem" title="Add">
-            	<span class="glyphicon glyphicon-plus"></span>
+        	<button class="btn btn-default" type="submit" title="Submit">
+            	<span class="glyphicon glyphicon-plus">Submit</span>
             </button>
         </span>
     </div>
     </form>
 </div>
-
 </body>
+
 </html>
